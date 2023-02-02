@@ -1,0 +1,237 @@
+:root {
+  --font-title: "Space Grotesk";
+  --font-mono: "Jetbrains Mono";
+  --font-main: "Inter", sans-serif;
+
+  --colour-primary: #e63697;
+  --colour-text: hsl(0, 0%, 96%);
+  --colour-text2: #bdbdbd;
+  --colour-base: #121212;
+  --colour-secondary: #252525;
+  --colour-overlay: #ffffff2c;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+  box-sizing: border-box;
+  text-decoration: none;
+
+  font-family: var(--font-main);
+  color: var(--colour-text);
+}
+
+.primary {
+  color: var(--colour-primary);
+}
+
+body {
+  min-height: 100vh;
+  width: 100%;
+  background-color: var(--colour-base);
+}
+
+main {
+  padding: 0 2rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: var(--font-title);
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.mainNav h1 span {
+  display: inline-block;
+  transform: scaleX(-1);
+  color: var(--colour-text);
+}
+
+.mainNav > * {
+  margin: 1rem 2rem;
+}
+
+@media screen and (min-width: 700px) {
+  .mainNav {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.mainNav h1 {
+  margin-right: auto;
+}
+
+/*Category Page*/
+
+.brandList ol {
+  list-style-type: none;
+}
+
+.brandList li {
+  border-bottom: 1px solid var(--colour-text);
+  display: flex;
+  justify-content: var(--colour-text);
+  align-items: center;
+  padding: 1rem;
+}
+
+.brandList a {
+  text-decoration: none;
+  display: block;
+  width: 100%;
+}
+
+.brandList li::after {
+  display: block;
+  width: 20px;
+  height: 20px;
+  content: "";
+  transition: all 0.3s;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 14"><path fill="none" stroke="white" d="M.8 12.87l7.5-6-7.5-6"></path></svg>');
+  background-repeat: no-repeat;
+  /* url('data:image/svg+xml;utf8,<svg class="svg-arrowRight" viewBox="0 0 9 14"><path fill="none" stroke="#979797" d="M.8 12.87l7.5-6-7.5-6"></path></svg>'); */
+}
+
+.brandList li:hover {
+  background: var(--colour-primary);
+  transition: transform 0.3s;
+}
+
+.brandList li:hover::after {
+  transform: translateX(8px);
+}
+
+/*Product List*/
+.productlist main {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 300px));
+  gap: 2rem;
+}
+.productlist main h2 {
+  grid-column: 1/-1;
+}
+.productlist article h3 {
+  font-size: 1rem;
+  flex-grow: 3;
+}
+.productlist article > * {
+  margin: 0;
+  font-size: 1rem;
+}
+.subtle {
+  color: var(--colour-text);
+}
+.productlist article {
+  display: flex;
+  flex-direction: column;
+}
+.productlist article.soldOut img {
+  opacity: 0.5;
+}
+.productlist article.soldOut::before {
+  content: "Out of Stock";
+  position: absolute;
+  background: var(--colour-base);
+  color: var(--colour-text);
+  padding: 1rem;
+}
+.productlist article .discounted,
+.productlist article .price span {
+  display: none;
+}
+.productlist article.onSale .discounted {
+  display: flex;
+  justify-content: space-between;
+}
+.discounted > p {
+  margin-bottom: 0;
+}
+.productlist article.onSale .price span {
+  display: initial;
+}
+.productlist article button {
+  margin-top: auto;
+}
+.productlist article {
+  margin-bottom: 1rem;
+}
+.discounted p:last-child {
+  background: var(--off-color);
+  padding: 0.2rem;
+}
+
+/*Product*/
+.breadcrumbs {
+  list-style-type: none;
+  display: flex;
+}
+
+.breadcrumbs li::after {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 0 10px;
+  content: "";
+  transition: all 0.3s;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 14"><path fill="none" stroke="white" d="M.8 12.87l7.5-6-7.5-6"></path></svg>');
+  background-repeat: no-repeat;
+}
+
+.breadcrumbs li:last-child::after {
+  background: none;
+}
+
+.purchaseBox {
+  background: var(--colour-secondary);
+  color: var(--colour-secondary);
+  padding: 1rem;
+}
+.info {
+  padding: 1rem;
+}
+.product select {
+  min-width: 100px;
+}
+.product main {
+  display: grid;
+}
+.product main .breadcrumbs,
+.product main img {
+  grid-column: 1/-1;
+}
+.purchaseBox form label {
+  gap: 1rem;
+}
+.purchaseBox button {
+  display: block;
+  margin-top: 1rem;
+  width: 100%;
+}
+dt {
+  font-weight: 700;
+}
+@media screen and (min-width: 1000px) {
+  .product main {
+    grid-template-columns: 1fr 310px;
+  }
+  .info {
+    order: 0;
+  }
+  .purchaseBox {
+    order: 2;
+    transform: translate(-50px, -100px);
+  }
+}
